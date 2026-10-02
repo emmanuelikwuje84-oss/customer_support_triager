@@ -1,0 +1,9 @@
+text,department
+"I was charged twice",Billing
+"My payment was duplicated",Billing
+"Someone hacked my account",Security
+"There is a fraudulent transaction",Security
+"I forgot my password",Account
+"I cannot login",Account
+"The app keeps crashing",Technical
+"The website is not working",Technical

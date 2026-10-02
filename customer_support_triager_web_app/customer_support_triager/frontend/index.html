@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Support Triage</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<main class="container">
+    <section class="card">
+        <h1>Customer Support Center</h1>
+        <p>Describe your problem and the system will analyze your ticket.</p>
+
+        <form id="ticket-form">
+            <label for="customer-name">Customer Name</label>
+            <input id="customer-name" type="text" required>
+
+            <label for="domain">Organization Domain</label>
+            <select id="domain" required>
+                <option value="">Loading...</option>
+            </select>
+
+            <label for="complaint">Complaint</label>
+            <textarea id="complaint" rows="7" required></textarea>
+
+            <button type="submit">Submit Ticket</button>
+        </form>
+    </section>
+
+    <section id="result" class="card hidden">
+        <h2>Ticket Result</h2>
+        <p><strong>Ticket ID:</strong> <span id="ticket-id"></span></p>
+        <p><strong>Department:</strong> <span id="department"></span></p>
+        <p><strong>Intent:</strong> <span id="intent"></span></p>
+        <p><strong>Urgency:</strong> <span id="urgency"></span></p>
+        <p><strong>Sentiment:</strong> <span id="sentiment"></span></p>
+        <p><strong>Route:</strong> <span id="route"></span></p>
+        <h3>Suggested Response</h3>
+        <p id="response"></p>
+    </section>
+</main>
+
+<script src="/js/app.js"></script>
+</body>
+</html>

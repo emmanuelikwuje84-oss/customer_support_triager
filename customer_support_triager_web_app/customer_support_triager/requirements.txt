@@ -1,0 +1,9 @@
+fastapi
+uvicorn[standard]
+sqlmodel
+python-dotenv
+openai
+scikit-learn
+joblib
+pytest
+httpx
