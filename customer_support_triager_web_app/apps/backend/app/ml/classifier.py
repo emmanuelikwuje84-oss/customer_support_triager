@@ -1,8 +1,8 @@
-from pathlib import Path
-
 import joblib
 
-MODEL_PATH = Path("data/models/department_model.joblib")
+from app.core.config import PROJECT_ROOT
+
+MODEL_PATH = PROJECT_ROOT / "data" / "models" / "department_model.joblib"
 
 
 class DepartmentMLClassifier:

@@ -1,13 +1,14 @@
 import csv
-from pathlib import Path
 
 import joblib
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
 from sklearn.pipeline import Pipeline
 
-DATA_PATH = Path("data/training.csv")
-MODEL_PATH = Path("data/models/department_model.joblib")
+from app.core.config import PROJECT_ROOT
+
+DATA_PATH = PROJECT_ROOT / "data" / "training.csv"
+MODEL_PATH = PROJECT_ROOT / "data" / "models" / "department_model.joblib"
 
 
 def load_training_data():
