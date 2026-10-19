@@ -1,4 +1,5 @@
 from fastapi import APIRouter, Depends, HTTPException
+from openai import OpenAIError, RateLimitError
 from pydantic import BaseModel, Field
 from sqlmodel import Session
 
@@ -29,6 +30,22 @@ def submit_ticket(
             domain_name=data.domain,
             complaint=data.complaint,
         )
+    except RateLimitError as error:
+        raise HTTPException(
+            status_code=503,
+            detail=(
+                "OpenAI quota or rate limit reached. "
+                "Check account billing and limits."
+            ),
+        ) from error
+    except OpenAIError as error:
+        raise HTTPException(
+            status_code=503,
+            detail=(
+                "OpenAI could not process this ticket. Check the API key, "
+                "model access, and service status."
+            ),
+        ) from error
     except ValueError as error:
         raise HTTPException(status_code=400, detail=str(error)) from error
     except RuntimeError as error:

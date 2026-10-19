@@ -46,10 +46,18 @@ form.addEventListener("submit", async (event) => {
             body: JSON.stringify(data),
         });
 
-        const result = await response.json();
+        const contentType = response.headers.get("content-type") || "";
+        const result = contentType.includes("application/json")
+            ? await response.json()
+            : await response.text();
 
         if (!response.ok) {
-            throw new Error(result.detail || "Something went wrong.");
+            const detail = typeof result === "string" ? result : result.detail;
+            throw new Error(detail || "Something went wrong.");
+        }
+
+        if (typeof result !== "object" || result === null) {
+            throw new Error("The server returned an invalid response.");
         }
 
         document.getElementById("ticket-id").textContent = result.ticket_id;
